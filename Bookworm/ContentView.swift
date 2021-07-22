@@ -11,7 +11,31 @@ import CoreData
 struct ContentView: View {
 
     var body: some View {
-        PushButtonView()
+        SizeClassView()
+    }
+}
+
+struct SizeClassView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+
+    var body: some View {
+        if sizeClass == .compact {
+            return AnyView(
+                VStack {
+                    Text("Active size class:")
+                    Text("COMPACT")
+                }
+                .font(.largeTitle)
+            )
+        } else {
+            return AnyView(
+                HStack {
+                    Text("Active size class:")
+                    Text("REGULAR")
+                }
+                .font(.largeTitle)
+            )
+        }
     }
 }
 
