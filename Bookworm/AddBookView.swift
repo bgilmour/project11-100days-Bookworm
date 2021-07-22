@@ -54,9 +54,18 @@ struct AddBookView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
+                .disabled(hasValidDetails == false)
             }
             .navigationBarTitle("Add Book")
         }
+    }
+
+    var hasValidDetails: Bool {
+        if title.trimmingCharacters(in: .whitespaces).isEmpty || author.trimmingCharacters(in: .whitespaces).isEmpty || genre.isEmpty {
+            return false
+        }
+
+        return true
     }
 }
 
