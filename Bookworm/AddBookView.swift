@@ -43,6 +43,7 @@ struct AddBookView: View {
                         let newBook = Book(context: moc)
 
                         newBook.id = UUID()
+                        newBook.date = Date()
                         newBook.title = title
                         newBook.author = author
                         newBook.genre = genre

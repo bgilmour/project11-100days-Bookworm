@@ -23,17 +23,15 @@ struct ContentView: View {
             List {
                 ForEach(books, id: \.self) { book in
                     NavigationLink(destination: DetailView(book: book)) {
-                        HStack {
-                            EmojiRatingView(rating: book.rating)
-                                .font(.largeTitle)
+                        EmojiRatingView(rating: book.rating)
+                            .font(.largeTitle)
 
-                            VStack(alignment: .leading) {
-                                Text(book.title ?? "Unknown Title")
-                                    .font(.headline)
-                                    .foregroundColor(book.rating == 1 ? .red : .primary)
-                                Text(book.author ?? "Unknown Author")
-                                    .foregroundColor(.secondary)
-                            }
+                        VStack(alignment: .leading) {
+                            Text(book.title ?? "Unknown Title")
+                                .font(.headline)
+                                .foregroundColor(book.rating == 1 ? .red : .primary)
+                            Text(book.author ?? "Unknown Author")
+                                .foregroundColor(.secondary)
                         }
                     }
                 }

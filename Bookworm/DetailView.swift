@@ -42,6 +42,10 @@ struct DetailView: View {
                 RatingView(rating: .constant(Int(book.rating)))
                     .font(.largeTitle)
 
+                Text("Rated on: \(formattedDate(from: book.date))")
+                    .font(.subheadline)
+                    .padding()
+
                 Spacer()
             }
         }
@@ -63,6 +67,12 @@ struct DetailView: View {
         try? moc.save()
 
         presentationMode.wrappedValue.dismiss()
+    }
+
+    func formattedDate(from date: Date?) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: date ?? Date())
     }
 }
 
